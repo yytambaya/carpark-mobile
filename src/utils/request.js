@@ -4,10 +4,16 @@ export const getData = async (url, headers, params) => {
     try{
             
         const res = await axios.get(url, {params:params, headers: headers});
-        return await {error: "", result: res};
+        return {error: "", result: res};
             
       }catch(error){
-        alert("Error here: " + error)
+        if(error.request){
+          //alert("Request error: " + JSON.stringify(error.request))
+        }else if(error.response){
+          //alert("Response error: ", error.response.data)
+        }else{
+          //alert("Error here: " + error.message)
+        }
         return {error: "error", result: error}
       }
 }

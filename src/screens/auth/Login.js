@@ -14,6 +14,15 @@ const Login = () => {
     const [error, setError] = useState([{field: "email", msg:""}, {field: "password", msg:""}]);
     const [genError, setGenError] = useState("")
     const navigation = useNavigation()
+
+    const setItem = async (key, value) => {
+        try{
+            await AsyncStorage.setItem(key, value)
+            console.log('set key value')
+        }catch(error){
+            console.log("Async Error: " + error)
+        }
+    }
     
     const login = async () => {
         //alert("Email: " + email + " Password: " + password);
@@ -37,13 +46,14 @@ const Login = () => {
             if(request.error == "" && request.result.data?.error != "error"){
                 if(request.result.data?.error == ""){
                     console.log("logged in successfully")
-                    AsyncStorage.setItem('_id', request.result.data.result.result._id);
-                    AsyncStorage.setItem('jwt_token', request.result.data.result.token);
-                    AsyncStorage.setItem('email', request.result.data.result.result.email);
-                    AsyncStorage.setItem('name', request.result.data.result.result.name);
-                    AsyncStorage.setItem('phoneNumber', request.result.data.result.result.phoneNumber);
+                    console.log(JSON.stringify(request.result.data.result.result))
+                    await setItem('_id', request.result.data.result.result._id);
+                    await setItem('jwt_token', request.result.data.result.token);
+                    await setItem('email', request.result.data.result.result.email);
+                    await setItem('name', request.result.data.result.result.name);
+                    await setItem('phoneNumber', request.result.data.result.result.phoneNumber);
                     
-                    navigation.navigate('profile') 
+                    navigation.navigate('reservations') 
                     //window.location.href = `${getSiteBaseURL()}/login`
 
                 }else{

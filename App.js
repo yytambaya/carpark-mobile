@@ -15,10 +15,12 @@ import Reservations from './src/screens/reservation/Reservations';
 import { Reservation } from './src/screens/reservation/Reservation';
 import Login from './src/screens/auth/Login';
 import { Home } from './src/screens/home/Home';
+import ReservationMain from './src/screens/reservation/ReservationMain';
+import { Navigation } from './src/screens/navigation/Navigation';
 
 const Stack = createNativeStackNavigator();
 
-const Forum = () => {
+const App = () => {
     const Tab = createBottomTabNavigator();
 
     useEffect(() => {
@@ -29,15 +31,16 @@ const Forum = () => {
       <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown:false}}>
               {/*<Stack.Screen name="signin" component={SignIn} />*/}
-              <Stack.Screen name="signup" component={Signup} />
+              <Stack.Screen name="navigation" component={Navigation} />
               <Stack.Screen name="login" component={Login} />
+              <Stack.Screen name="reservations" component={ReservationMain} />
               <Stack.Screen name="home" component={Home} />
+              <Stack.Screen name="signup" component={Signup} />
               <Stack.Screen name="profile" component={Profile} />
-              <Stack.Screen name="reservations" component={Reservations} />
               <Stack.Screen name="reservation" component={Reservation} />
           </Stack.Navigator>
       </NavigationContainer>
     );
 }
 
-export default Forum;
+export default App;
