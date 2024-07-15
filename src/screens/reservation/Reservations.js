@@ -111,40 +111,42 @@ const Reservations = ({setPage, setLastPage, setReservation}) => {
       <AppBar/>
         <Container px="3" >
       <Text color={'blue.500'}>Reservations</Text>
-      {/*reservations.map((res, i) => 
+      <Flex>
+      {reservations.map((res, i) => 
         <Box>
           <Text>{res?.parkId}</Text>
           <Text>{res?.slotId}</Text>
         </Box>
-      )*/}
-      <Flex>
+      )}
+      </Flex>
+      {/*<Flex>
         <Box mb="4" bgColor={'gray.400'} px="8" py="6">
           <Text fontSize={'xl'}>Spot A</Text>
           <Flex direction="column">
-            <Text>Garki park</Text>
-            <Text>23/08/24</Text>
-            <Text>2:30 pm</Text>
+            <Text>Ranon Sarki park</Text>
+            <Text>24/08/21</Text>
+            <Text>1:00 pm</Text>
           </Flex>
         </Box>
 
         <Box mb="4" bgColor={'gray.400'} px="8" py="6">
           <Text fontSize={'xl'}>Admin Spot</Text>
           <Flex direction="column">
-            <Text>Samru Dan Abba</Text>
-            <Text>13/07/24</Text>
-            <Text>8:00 am</Text>
+            <Text>Amaru</Text>
+            <Text>01/04/23</Text>
+            <Text>10:00 pm</Text>
           </Flex>
         </Box>
 
         <Box bgColor={'gray.400'} px="8" py="6">
           <Text fontSize={'xl'}>Spot D</Text>
           <Flex direction="column">
-            <Text>Garki park</Text>
-            <Text>12/04/24</Text>
-            <Text>5:30 pm</Text>
+            <Text>Sabon tasha</Text>
+            <Text>11/02/21</Text>
+            <Text>3:30 pm</Text>
           </Flex>
         </Box>
-      </Flex>
+      </Flex>*/}
       {reservations.length ? <Text>No reservations</Text> : null}
         </Container>
 
